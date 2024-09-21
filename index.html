@@ -66,6 +66,25 @@
             background-color: #fff;
             border: 1px solid #ddd;
         }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup.visible {
+            display: block;
+        }
+        .popup button {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -113,6 +132,11 @@
     <p id="cart-items">No items added.</p>
 </div>
 
+<div class="popup" id="popup">
+    <p id="popup-message"></p>
+    <button onclick="closePopup()">Close</button>
+</div>
+
 <footer>
     <p>&copy; 2024 Walmart Clone</p>
 </footer>
@@ -121,6 +145,18 @@
     function addToCart(productName, productPrice) {
         const cartItems = document.getElementById('cart-items');
         cartItems.textContent = `Added ${productName} for ${productPrice}`;
+        
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popup-message');
+        popupMessage.textContent = `You added ${productName} for ${productPrice}`;
+        popup.classList.add('visible');
+
+        setTimeout(closePopup, 3000); // Auto-close after 3 seconds
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        popup.classList.remove('visible');
     }
 </script>
 
