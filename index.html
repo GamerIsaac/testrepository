@@ -60,6 +60,12 @@
             bottom: 0;
             width: 100%;
         }
+        #cart {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -83,24 +89,40 @@
     <div class="product">
         <h3>Product 1</h3>
         <p>$19.99</p>
+        <button onclick="addToCart('Product 1', '$19.99')">Add to Cart</button>
     </div>
     <div class="product">
         <h3>Product 2</h3>
         <p>$29.99</p>
+        <button onclick="addToCart('Product 2', '$29.99')">Add to Cart</button>
     </div>
     <div class="product">
         <h3>Product 3</h3>
         <p>$39.99</p>
+        <button onclick="addToCart('Product 3', '$39.99')">Add to Cart</button>
     </div>
     <div class="product">
         <h3>Product 4</h3>
         <p>$49.99</p>
+        <button onclick="addToCart('Product 4', '$49.99')">Add to Cart</button>
     </div>
+</div>
+
+<div id="cart">
+    <h2>Cart</h2>
+    <p id="cart-items">No items added.</p>
 </div>
 
 <footer>
     <p>&copy; 2024 Walmart Clone</p>
 </footer>
+
+<script>
+    function addToCart(productName, productPrice) {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.textContent = `Added ${productName} for ${productPrice}`;
+    }
+</script>
 
 </body>
 </html>
